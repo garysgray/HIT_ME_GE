@@ -1,0 +1,123 @@
+/* ------------------------------------------------------------------ */
+/* Root constants */
+/* ------------------------------------------------------------------ */
+
+:root {
+    /* Colors */
+    --color-white: #a244a5;
+    --color-black: #000000;
+    --color-red: #FF0000;
+
+    /* Fonts */
+    --font-format: bold 20px Calibri;
+ 
+    /* Borders & Radii */
+    --border-width: 4px;
+    --border-radius: 18px;
+    --border-style: solid;
+    --border: var(--border-width) var(--border-style) var(--color-white);
+
+    /* Spacing */
+    --body-padding: clamp(15px, 3vw, 45px);
+    --menu-gap: 1.5rem;
+    --menu-padding: 0.75rem 2rem;
+    --link-padding: 0.5rem 1.25rem;
+    --message-padding-y: clamp(0.05rem, 1vw, 0.1rem);
+    --message-padding-x: clamp(1rem, 4vw, 2.5rem);
+
+    /* Effects */
+    --transition-speed: 0.3s;
+    --canvas-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    --glass-bg: rgba(0, 0, 0, 0.7);
+    --glass-blur: blur(4px);
+
+    /* Assets */
+    --image-url: url(../assets/sprites/genericBackGround.png);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base elements */
+/* ------------------------------------------------------------------ */
+body 
+{
+    background: var(--color-black) var(--image-url) no-repeat center center / cover;
+    text-align: center;
+    padding: var(--body-padding);
+    margin: 0;
+}
+
+canvas 
+{
+    border: var(--border);
+    border-radius: var(--border-radius);
+    cursor: none;
+    box-shadow: var(--canvas-shadow);
+}
+
+a 
+{
+    color: var(--color-red);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+p 
+{
+  word-spacing: 0.2em; 
+}
+
+/* ------------------------------------------------------------------ */
+/* Container */
+/* ------------------------------------------------------------------ */
+#container
+{
+   display: inline-block;
+}
+
+/* ------------------------------------------------------------------ */
+/* Top Menu */
+/* ------------------------------------------------------------------ */
+#top_menu 
+{
+   display: flex;
+    justify-content: center;
+    gap: var(--menu-gap);
+    background: var(--glass-bg);
+    font: var(--font-format);
+    padding: var(--menu-padding);
+    border-radius: var(--border-radius);
+    border: var(--border);
+    backdrop-filter: var(--glass-blur);
+}
+
+#top_menu a 
+{
+    padding: var(--link-padding);
+    border-radius: calc(var(--border-radius) - 6px);
+    transition: all var(--transition-speed) ease;
+}
+
+#top_menu a:hover 
+{
+    color: var(--color-white);
+    background: var(--color-red);
+    border: var(--border);
+}
+
+/* ------------------------------------------------------------------ */
+/* Message */
+/* ------------------------------------------------------------------ */
+#message {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    background: var(--glass-bg);
+    font: var(--font-format);
+    color: var(--color-red);
+    padding: var(--message-padding-y) var(--message-padding-x);
+    margin: 1rem auto;
+    text-align: center;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    backdrop-filter: var(--glass-blur);
+}

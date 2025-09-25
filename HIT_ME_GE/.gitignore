@@ -1,0 +1,22 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore build/output files
+dist/
+build/
+
+# Ignore dependencies
+node_modules/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+# Ignore environment files
+.env
+
+feedit.py
+feedit2.py
+temp_clips.js
+suggestions_for_inputLogic
