@@ -17,6 +17,5 @@ node_modules/
 .env
 
 feedit.py
-feedit2.py
 temp_clips.js
-suggestions_for_inputLogic
+suggestions.md
