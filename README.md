@@ -1,3 +1,5 @@
+![image alt](https://github.com/garysgray/HIT_ME_GE/blob/main/HIT_ME%20Game%20Engine%20Logo.png?raw=true)
+
 # HTML5 Web Game Engine (Work-in-Progress)
 
 This is my attempt at building a **simple yet strong HTML5 web game engine**.  
