@@ -24,7 +24,7 @@ const GameDefs = Object.freeze({
     },
 
     billBoardTypes: {
-        BACKGROUND: { type: "background", w: 600, h: 600, path: "assets/sprites/genericGameScreen.png", isCenter: false },
+        BACKGROUND: { type: "background", w: 600, h: 600, path: "assets/sprites/stars.png", isCenter: false },
         HUD:        { type: "hud",        w: 850, h: 200, path: "assets/sprites/hud.png" , isCenter: false },
         SPLASH:     { type: "splash",     w: 400, h: 100, path: "assets/sprites/splash.png" , isCenter: true },
         PAUSE:      { type: "pause",      w: 400, h: 100, path: "assets/sprites/pause.png" , isCenter: true },
@@ -83,6 +83,11 @@ const GameDefs = Object.freeze({
     timerTypes: {
         SHOOT_COOL_DOWN_TIMER: "shootCooldownTimer",
         GAME_CLOCK: "gameClock",
+    },
+
+    parallexType: {
+        HORIZONTAL: 1,
+        VERTICLE:   2
     }
 
 });

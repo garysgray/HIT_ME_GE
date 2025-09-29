@@ -165,7 +165,8 @@ class Game
 
             // Initialize boards into an array using definitions 
             const boards = [
-                new BillBoard(GameDefs.billBoardTypes.BACKGROUND.type, GameDefs.billBoardTypes.BACKGROUND.w, GameDefs.billBoardTypes.BACKGROUND.h, 0, 0, 0, GameDefs.billBoardTypes.BACKGROUND.isCenter),
+                //new BillBoard(GameDefs.billBoardTypes.BACKGROUND.type, GameDefs.billBoardTypes.BACKGROUND.w, GameDefs.billBoardTypes.BACKGROUND.h, 0, 0, 0, GameDefs.billBoardTypes.BACKGROUND.isCenter),
+                new ParallaxBillBoard(GameDefs.billBoardTypes.BACKGROUND.type, GameDefs.billBoardTypes.BACKGROUND.w, GameDefs.billBoardTypes.BACKGROUND.h, 0, 0, 60, GameDefs.billBoardTypes.BACKGROUND.isCenter, GameDefs.parallexType.HORIZONTAL),
                 new BillBoard(GameDefs.billBoardTypes.HUD.type,        GameDefs.billBoardTypes.HUD.w,        GameDefs.billBoardTypes.HUD.h,        0, 0, 0, GameDefs.billBoardTypes.HUD.isCenter),
                 new BillBoard(GameDefs.billBoardTypes.SPLASH.type,     GameDefs.billBoardTypes.SPLASH.w,     GameDefs.billBoardTypes.SPLASH.h,     0, 0, 0, GameDefs.billBoardTypes.SPLASH.isCenter),
                 new BillBoard(GameDefs.billBoardTypes.PAUSE.type,      GameDefs.billBoardTypes.PAUSE.w,      GameDefs.billBoardTypes.PAUSE.h,      0, 0, 0, GameDefs.billBoardTypes.PAUSE.isCenter),
@@ -187,6 +188,7 @@ class Game
                     console.error(`Failed to add board "${board.name}":`, err);
                 }
             });
+
 
             //Initialize sounds into device audio
             Object.values(GameDefs.soundTypes).forEach(sndDef => 
@@ -232,9 +234,9 @@ class Game
     { 
         this.score     = 0;
         this.lives     = this.#gameConsts.GAME_LIVES_START_AMOUNT;
-        this.#gameTimers.getObjectByName(GameDefs.timerTypes.GAME_CLOCK).start();
+        this.gameTimers.getObjectByName(GameDefs.timerTypes.GAME_CLOCK).start();
 
-        //this.#player.setMouseToPlayer(device, this.#player);
+        this.player.setMouseToPlayer(device);
         // this.ammo      = 0;
         // this.gameSprites.clearObjects();
         // this.projectiles.clearObjects();

@@ -276,4 +276,64 @@ class BillBoard extends GameObject
     {
         // Optional: BillBoard scrolling/animation
     }
+    render(device, image, yBuff)
+    {
+        device.renderImage(image, this.posX, this.posY - yBuff);
+    }
+}
+
+class ParallaxBillBoard extends BillBoard
+{
+    #parallexType;
+    #posX2 = 0;
+    #posY2 = 0;
+
+    constructor(name, width, height, x, y, speed, isCenter, parallexType) 
+    {
+        super(name, width, height, x, y, speed, isCenter);
+        this.#parallexType = parallexType;
+
+        // start second copy right next to the first
+        this.#posX2 = this.posX + this.width;
+        this.#posY2 = this.posY;
+    }
+
+    get parallexType() { return this.#parallexType; }
+
+    get posX2() { return this.#posX2; }
+    get posY2() { return this.#posY2; }
+
+    set posX2(v) { this.#posX2 = v; }
+    set posY2(v) { this.#posY2 = v; }
+
+ 
+
+    update(delta, game) 
+    {
+        // HORIZONTAL
+        if (this.parallexType === GameDefs.parallexType.HORIZONTAL) 
+        {
+           this.posX -= this.speed * delta;
+
+            // calculate scaled width for screen
+            const scaledWidth = game.gameConsts.SCREEN_WIDTH; // or use image.width if you prefer
+            if (this.posX <= -scaledWidth) this.posX += scaledWidth;
+
+            // second copy always aligned
+            this.posX2 = this.posX + scaledWidth;
+            this.posY2 = this.posY;
+        } else {
+            // vertical unchanged
+            this.posY -= this.speed * delta;
+            if (this.posY <= -this.height) this.posY += this.height;
+            this.posY2 = this.posY + this.height;
+            this.posX2 = this.posX;
+        }
+    }
+
+    render(device, game, image)
+    {
+        device.renderImage(image, this.posX, this.posY , game.gameConsts.SCREEN_WIDTH , game.gameConsts.SCREEN_HEIGHT);
+        device.renderImage(image, this.posX2, this.posY2,  game.gameConsts.SCREEN_WIDTH , game.gameConsts.SCREEN_HEIGHT);
+    }
 }

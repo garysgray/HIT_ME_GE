@@ -10,13 +10,17 @@
 function renderBillBoardsLayer(device, game) {   
     try 
     {
+        const yBuff = game.gameConsts.HUD_BUFFER * game.gameConsts.SCREEN_HEIGHT;
+
         let board = game.billBoards.getObjectByName(GameDefs.billBoardTypes.BACKGROUND.type);
         const bgImage = device.images.getImage?.(GameDefs.billBoardTypes.BACKGROUND.type);
         if (board && bgImage) 
         {
             try 
             {
-                device.renderImage(bgImage, board.posX, board.posY, game.gameConsts.SCREEN_WIDTH , game.gameConsts.SCREEN_HEIGHT);
+                //device.renderImage(bgImage, board.posX, board.posY, game.gameConsts.SCREEN_WIDTH , game.gameConsts.SCREEN_HEIGHT);
+                //device.renderImage(bgImage, board.posX2, board.posY2, game.gameConsts.SCREEN_WIDTH , game.gameConsts.SCREEN_HEIGHT);
+                board.render(device, game, bgImage)
             } 
             catch (e) 
             {
@@ -33,13 +37,14 @@ function renderBillBoardsLayer(device, game) {
         {
             case GameDefs.gameStates.INIT: 
             {
-                const yBuff = game.gameConsts.HUD_BUFFER * game.gameConsts.SCREEN_HEIGHT;
+                
                 board = game.billBoards.getObjectByName(GameDefs.billBoardTypes.SPLASH.type);
                 const splashImg = device.images.getImage(GameDefs.billBoardTypes.SPLASH.type);
                 if (board && splashImg) 
                 {
                     try {
-                        device.renderImage(splashImg, board.posX, board.posY - yBuff);
+                        //device.renderImage(splashImg, board.posX, board.posY - yBuff);
+                        board.render(device, splashImg, yBuff)
                     } 
                     catch (e) 
                     {
@@ -56,14 +61,15 @@ function renderBillBoardsLayer(device, game) {
 
             case GameDefs.gameStates.PAUSE:
             {
-                const yBuff = game.gameConsts.HUD_BUFFER * game.gameConsts.SCREEN_HEIGHT;
                 board = game.billBoards.getObjectByName(GameDefs.billBoardTypes.PAUSE.type);
                 const pauseImg = device.images.getImage(GameDefs.billBoardTypes.PAUSE.type);
+                
                 if (board && pauseImg) 
                 {
                     try 
                     {
-                        device.renderImage(pauseImg, board.posX, board.posY - yBuff);
+                        //device.renderImage(pauseImg, board.posX, board.posY - yBuff);
+                        board.render(device, pauseImg, yBuff)
                     } 
                     catch (e) 
                     {
@@ -80,15 +86,15 @@ function renderBillBoardsLayer(device, game) {
             break;
 
             case GameDefs.gameStates.LOSE: 
-            {
-                const yBuff = (game.gameConsts.HUD_BUFFER * game.gameConsts.SCREEN_HEIGHT); 
+            { 
                 board = game.billBoards.getObjectByName(GameDefs.billBoardTypes.DIE.type);
                 const dieImg = device.images.getImage(GameDefs.billBoardTypes.DIE.type);
                 if (board && dieImg) 
                 {
                     try 
                     {
-                        device.renderImage(dieImg, board.posX, board.posY- yBuff);      
+                        //device.renderImage(dieImg, board.posX, board.posY- yBuff); 
+                        board.render(device, dieImg, yBuff)     
                     } 
                     catch (e) 
                     {

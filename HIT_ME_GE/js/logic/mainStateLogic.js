@@ -42,6 +42,10 @@ function updateGameStates(device, game, delta)
                     // GAme clock that helps update when NPC's speed should incread and give player points
                     const gameClock = game.gameTimers.getObjectByName(GameDefs.timerTypes.GAME_CLOCK);
 
+                    const board = game.billBoards.getObjectByName(GameDefs.billBoardTypes.BACKGROUND.type);
+
+                    board.update(delta, game)
+
                     if (gameClock.active)
                     {
                         // Update game time clock

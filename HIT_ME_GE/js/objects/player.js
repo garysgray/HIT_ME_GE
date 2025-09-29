@@ -10,20 +10,25 @@ class Player extends GameObject
 {
     #coolDownTimer;
     #playerState; 
+    #savedPlayerState;
 
     constructor(width, height, x, y, speed) 
     {
         super(GameDefs.spriteTypes.PLAYER, width, height, x, y, speed);
 
         this.#playerState = GameDefs.playStates.ALIVE;
+        this.#savedPlayerState = GameDefs.playStates.ALIVE;
+
         this.#coolDownTimer =  new Timer(GameDefs.timerTypes.SHOOT_COOL_DOWN_TIMER, 0, GameDefs.timerModes.COUNTDOWN);
         this.speed = speed;
     }
  
     get coolDownTimer() { return this.#coolDownTimer; }
     get playerState() { return this.#playerState; }
+    get savedPlayerState() { return this.#savedPlayerState; }
 
     set playerState(v) { this.#playerState = v; }
+    set savedPlayerState(v) { this.#savedPlayerState = v; }
 
     // Update player each frame
     update(device, game, delta) 
@@ -121,9 +126,13 @@ class Player extends GameObject
     // Player Mouse Input Binding
     // If you want mouse to control player, call this functinin in setGame
     // -----------------------------
-    setMouseToPlayer(device, aPlayer) 
+    setMouseToPlayer(device) 
     {
-        device.setupMouse(aPlayer, device);
-    }  
+        device.setupMouse(this, device);
+    } 
+    
+    savePlayerState(state)    { this.#savedPlayerState = state; }
+    restorePlayerState()      { this.#playerState = this.#savedPlayerState; }
+    setPlayerState(playerState) { this.#playerState = playerState; }
 
 }
