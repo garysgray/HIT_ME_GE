@@ -1,3 +1,5 @@
+![](HIT_ME_image.png)
+
 # HTML5 Web Game Engine (Work-in-Progress)
 
 This is my attempt at building a **simple yet strong HTML5 web game engine**.  
@@ -68,4 +70,11 @@ Expect things to change as I learn and build.
 
 This may not be **Unity**, but it’s my engine.  
 It’s a **foundation**, a **learning tool**, and hopefully a **useful little engine** for anyone else who wants to get simple web games running fast.  
+
+---
+## LOG
+
+    9/26/25
+        Added Parallex BillBoard that can be set for VERTICLE or HORIZONTAL in constructor
+
 

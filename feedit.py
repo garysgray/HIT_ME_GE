@@ -3,8 +3,8 @@ import hashlib
 import openai
 
 # ---------------- CONFIG ----------------
-openai.api_key = "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"  # <-- Set your API key
-PROJECT_DIR = r"C:\Users\Uggr\Desktop\Avoider-Game-HTML5-master"
+openai.api_key = "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"  # <-- Set your API key
+PROJECT_DIR = r"C:\Users\Uggr\Desktop\HIT_ME_GE_1"
 CHUNK_SIZE = 3000  # approx character size per chunk
 USE_SUMMARIES = True  # Summarize files larger than CHUNK_SIZE
 
